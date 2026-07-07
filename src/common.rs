@@ -1940,6 +1940,9 @@ async fn secure_tcp_impl(conn: &mut Stream, key: &str, log_on_success: bool) -> 
     // as WebSocket Secure (wss://) already provides transport layer encryption.
     // This doesn't affect the end-to-end encryption between clients,
     // it only avoids redundant encryption between client and server.
+    if use_ws() {
+        return ok(());
+    }
     return Ok(());
     let rs_pk = get_rs_pk(key);
     let Some(rs_pk) = rs_pk else {
