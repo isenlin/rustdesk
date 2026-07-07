@@ -1941,7 +1941,7 @@ async fn secure_tcp_impl(conn: &mut Stream, key: &str, log_on_success: bool) -> 
     // This doesn't affect the end-to-end encryption between clients,
     // it only avoids redundant encryption between client and server.
     if use_ws() {
-        return of(());
+        return Ok(());
     }
     return Ok(());
     let rs_pk = get_rs_pk(key);
